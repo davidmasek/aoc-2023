@@ -1,0 +1,5 @@
+name: aoc
+dependencies:
+  - python=3.12
+  - fire=0.5
+  - numpy=1.26

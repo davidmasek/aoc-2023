@@ -1,0 +1,9 @@
+{
+    "[python]": {
+        "editor.formatOnSave": true,
+    },
+    "flake8.severity": {
+        "E": "Warning",
+        "F": "Warning"
+    }
+}
