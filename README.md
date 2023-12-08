@@ -5,9 +5,7 @@ Advent of Code 2023 solutions. For fun and profit.
 ## Download puzzle
 
 ```bash
-mkdir 01 # <day>
-cd 01
-aoc -d 1 d
+bash download.sh <day>
 ```
 
 Uses `https://github.com/scarvalhojr/aoc-cli`.
