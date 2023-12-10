@@ -109,11 +109,44 @@ def solve_first(file: Path):
                 q.append(nb)
 
     print("A:", len(path) // 2)
+    return lines, path
+
+
+def is_inside(y: int, x: int, lines: list[str], path: dict) -> bool:
+    crosses = 0
+    # going horizontally bypasses the "squeezing" option
+    while y < len(lines) and x < len(lines[0]):
+        is_cross = ((y, x) in path) and (lines[y][x] not in "L7")
+        if is_cross:
+            crosses += 1
+        y += 1
+        x += 1
+    return crosses % 2 == 1
+
+
+def solve_second(file: Path):
+    lines, path = solve_first(file)
+    path = {k: True for k in path}
+    total = 0
+    map_ = []
+    for y in range(len(lines)):
+        map_line = []
+        for x in range(len(lines[0])):
+            if (y, x) in path:
+                map_line.append(lines[y][x])
+            elif is_inside(y, x, lines, path):
+                total += 1
+                map_line.append("I")
+            else:
+                map_line.append(".")
+        map_.append("".join(map_line))
+    # print("\n".join(map_))
+    print("B:", total)
 
 
 def solve(file: Path):
     solve_first(file)
-    # solve_second(file)
+    solve_second(file)
 
 
 if __name__ == "__main__":
